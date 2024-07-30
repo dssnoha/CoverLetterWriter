@@ -1,0 +1,25 @@
+﻿<Window x:Class="CoverLetterWriter.PopUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoverLetterWriter"
+        mc:Ignorable="d"
+        Title="PopUp" Height="350" Width="600">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Text="{Binding FullName, Mode=TwoWay}" Height="20" Margin="42,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" />
+        <Label Content="Full Name" HorizontalAlignment="Left" Height="24" Margin="43,23,0,0" VerticalAlignment="Top" Width="221"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding StreetAddress, Mode=TwoWay}" Height="20" Margin="327,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" />
+        <Label Content="Street Address" HorizontalAlignment="Left" Height="24" Margin="327,23,0,0" VerticalAlignment="Top" Width="221"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding CityAndPostcode, Mode=TwoWay}" Height="20" Margin="327,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221"/>
+        <Label Content="CityAndPostcode" HorizontalAlignment="Left" Height="24" Margin="327,112,0,0" VerticalAlignment="Top" Width="221"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding PhoneNumber, Mode=TwoWay}" Height="20" Margin="330,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" />
+        <Label Content="PhoneNumber" HorizontalAlignment="Left" Height="24" Margin="330,211,0,0" VerticalAlignment="Top" Width="221"/>
+        <TextBox HorizontalAlignment="Left" Text="{Binding Email, Mode=TwoWay}" Height="20" Margin="41,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" />
+        <Label Content="Email" HorizontalAlignment="Left" Height="24" Margin="41,115,0,0" VerticalAlignment="Top" Width="222"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="212,285,0,0" VerticalAlignment="Top" Height="38" Width="190" Command="{Binding AddCommand}" Click="Button_Click" BorderThickness="1,1,1,1" Padding="1,1,1,1"/>
+        
+
+        <Label Content="Personal Data" HorizontalAlignment="Left" Height="24" Margin="241,7,0,0" VerticalAlignment="Top" Width="221"/>
+    </Grid>
+</Window>
