@@ -3,6 +3,8 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
+	<RuntimeIdentifier>win-x86</RuntimeIdentifier>
+	<SelfContained>true</SelfContained>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
@@ -32,6 +34,7 @@
   <ItemGroup>
     <PackageReference Include="DocumentFormat.OpenXml" Version="3.0.2" />
     <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1001" />
+    <PackageReference Include="Select.HtmlToPdf.NetCore" Version="24.1.0" />
     <PackageReference Include="XamlAnimatedGif" Version="2.3.0" />
   </ItemGroup>
 

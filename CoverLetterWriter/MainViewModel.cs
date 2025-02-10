@@ -380,6 +380,20 @@ namespace CoverLetterWriter
                 }
             }
         }
+        private string _filePath;
+
+        public string FilePath
+        {
+            get { return _filePath; }
+            set
+            {
+                if (_filePath != value)
+                {
+                    _filePath = value;
+                    OnPropertyChanged(nameof(FilePath));
+                }
+            }
+        }
         private List<KeyValue> _newText;
         public List<KeyValue> NewText
         {
@@ -417,6 +431,7 @@ namespace CoverLetterWriter
         public ICommand OpenNewWindowCommand { get; }
         public ICommand OpenNewTextWindowCommand { get; }
         public ICommand AddTextCommand { get; }
+        public ICommand SaveHtmlFile_Click { get; }
 
 
         protected virtual void OnPropertyChanged(string propertyName, string value = null)
@@ -483,13 +498,29 @@ namespace CoverLetterWriter
         }
         public async void ChangeCommand()
         {
-            BtnVis = Visibility.Collapsed;
-            ImgVis = Visibility.Visible;
-            PdfGenerator wordEditor = new PdfGenerator();
-            NewText.Add(new KeyValue { Key = "{" + nameof(Name) + "}", Value = SelectedOption + " " +Name });
-            wordEditor.EditWordDocument("CoverLetter.docx", NewText);
-            BtnVis = Visibility.Visible;
-            ImgVis = Visibility.Collapsed;
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog
+            {
+                Title = "Save Cover Letter as PDF",
+                Filter = "PDF Files (*.pdf)|*.pdf",
+                DefaultExt = "pdf",
+                FileName = "CoverLetter"
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                // Set the FilePath using the ViewModel
+                FilePath = saveFileDialog.FileName;
+                BtnVis = Visibility.Collapsed;
+                ImgVis = Visibility.Visible;
+                PdfGenerator wordEditor = new PdfGenerator();
+                NewText.Add(new KeyValue { Key = "{" + nameof(Name) + "}", Value = SelectedOption + " " + Name });
+                string baseDirectory = Directory.GetCurrentDirectory();
+                string filePath = System.IO.Path.Combine(baseDirectory, "CoverLetter.docx");
+
+                wordEditor.EditWordDocument(FilePath, NewText);
+                BtnVis = Visibility.Visible;
+                ImgVis = Visibility.Collapsed;
+            }
         }
     }
     public class RelayCommand : ICommand
