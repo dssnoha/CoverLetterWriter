@@ -503,7 +503,7 @@ namespace CoverLetterWriter
                 Title = "Save Cover Letter as PDF",
                 Filter = "PDF Files (*.pdf)|*.pdf",
                 DefaultExt = "pdf",
-                FileName = "CoverLetter"
+                FileName = FullName + "-" + CompanyName + "-CoverLetter"
             };
 
             if (saveFileDialog.ShowDialog() == true)
